@@ -1,6 +1,14 @@
+.game {
+    margin: auto;
+    width: 50%;
+}
 .mainSudoku {
-    width: 200px;
-    height: 200px;
+    margin: auto;
+    width: 500px;
+    height: 500px;
     background-color: rgb(168, 168, 168);
-    margin: 20px;
+}
+
+.buttons {
+    margin: auto;
 }
