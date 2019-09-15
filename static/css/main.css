@@ -21,6 +21,17 @@
     box-sizing: content-box;
 }
 
+.sudoku-table:after{
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 165px;
+    background-color: red;
+}
+
 .sudoku-table tbody {
     display: flex;
     flex-direction: column;
