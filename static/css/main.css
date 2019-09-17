@@ -1,12 +1,13 @@
 .game {
     margin: auto;
-    width: 495px;
-    height: 495px;
+    margin-top: 50px;
+    width: 100%;
+    max-width: 495px;
     background-color: white;
 }
 .mainSudoku {
-    width: 495px;
-    height: 495px;
+    width: 100%;
+    max-width: 495px;
     display: block;
     position: absolute;
 }
@@ -17,7 +18,6 @@
 
 .sudoku-table {
     display: block;
-    height: 100%;
     width: 100%;
     border: 2px solid black;
     box-sizing: content-box;
@@ -26,9 +26,9 @@
 .sudoku-table:after{
     content: "";
     display: block;
-    height: 165px;
+    height: 33.3333%;
     position: absolute;
-    top: 167px;
+    top: 33.33333%;
     left: 2px;
     width: 100%;
     border-top: 2px solid black;
@@ -41,8 +41,8 @@
     height: 100%;
     position: absolute;
     top: 2px;
-    left: 166px;
-    width: 165px;
+    left: 33.3333%;
+    width: 33.3333%;
     border-left: 2px solid black;
     border-right: 2px solid black;
 }
@@ -57,13 +57,13 @@
 .sudoku-row {
     display: flex;
     width: 100%;
-    height: 55px;
+    height: 11.11111%;
 }
 
 .sudoku-cell {
     display: flex;
     height: 100%;
-    width: 55px;
+    width: 11.1111%;
     border-top: 1px solid rgb(196, 196, 196);
     border-right: 1px solid rgb(196, 196, 196);
     box-sizing: border-box;
