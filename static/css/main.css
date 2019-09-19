@@ -1,18 +1,33 @@
-.game {
-    margin: auto;
-    margin-top: 50px;
+.content-wrapper {
+    display: flex;
     width: 100%;
-    max-width: 495px;
-    background-color: white;
-}
-.mainSudoku {
-    width: 100%;
-    max-width: 495px;
-    display: block;
-    position: absolute;
+    padding: 50px;
 }
 
-.mainSudoku::after {
+.game {
+    width: 100%;
+    background-color: white;
+    position: relative;
+    display: block;
+}
+
+.game-wrapper {
+    display: block;
+    max-width: 500px;
+    margin: 0 auto 20px;
+}
+
+.sudoku-wrapper {
+    position: relative;
+    width: 100%;
+}
+.main-sudoku {
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+.main-sudoku::after {
     display: block;
     content: "";
     padding-bottom: 100%;
