@@ -1,3 +1,7 @@
+html,body {
+    height: 100%;
+}
+
 .content-wrapper {
     display: flex;
     width: 100%;
@@ -23,14 +27,16 @@
 }
 .main-sudoku {
     width: 100%;
+    height: 100%;
     display: block;
     position: relative;
+    overflow: hidden;
 }
 
 .main-sudoku::after {
     display: block;
     content: "";
-    padding-bottom: 100%;
+    padding-top: 100%;
 }
 
 .buttons {
@@ -39,12 +45,11 @@
 
 .sudoku-table {
     display: block;
+    position: absolute;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
-    box-sizing: content-box;
 }
-
+/*
 .sudoku-table:after{
     content: "";
     display: block;
@@ -56,7 +61,8 @@
     border-top: 2px solid black;
     border-bottom: 2px solid black;
 }
-
+*/
+/*
 .sudoku-table tbody:after{
     content: "";
     display: block;
@@ -68,12 +74,13 @@
     border-left: 2px solid black;
     border-right: 2px solid black;
 }
-
+*/
 .sudoku-table tbody {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .sudoku-row {
