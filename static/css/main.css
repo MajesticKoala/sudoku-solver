@@ -17,7 +17,7 @@ html,body {
 
 .game-wrapper {
     display: block;
-    max-width: 500px;
+    max-width: 450px;
     margin: 0 auto 20px;
 }
 
@@ -112,4 +112,34 @@ html,body {
 .left-cell {
     border-left: 1px solid rgb(196, 196, 196);
     box-sizing: border-box;
+}
+
+.number-tray {
+    position: absolute;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.number-tray:after {
+    display: block;
+    content: "";
+    padding-top: 11.5%;
+}
+
+.number-tray-table {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    content: "";
+}
+
+.number-tray-table tbody {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
