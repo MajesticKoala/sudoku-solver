@@ -61,6 +61,7 @@ html,body {
     width: 100%;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
+    pointer-events: none;
 }
 
 
@@ -74,6 +75,7 @@ html,body {
     width: 33.3333%;
     border-left: 2px solid black;
     border-right: 2px solid black;
+    pointer-events: none;
 }
 
 .sudoku-table tbody {
@@ -130,6 +132,14 @@ html,body {
 }
 
 .number-tray-table {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    content: "";
+}
+
+.number-tray-table:after {
     position: relative;
     height: 100%;
     width: 100%;
@@ -142,4 +152,25 @@ html,body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+}
+
+.number-tray-row {
+    text-align: center;
+    border: 2px solid black;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.number-tray-cell {
+    text-align: center;
+    display: flex;
+    width: 11.5%;
+    height: 100%;
+    cursor: pointer;
+    border-right: 1px solid rgb(196, 196, 196);
+}
+
+.number-tray-cell:hover {
+    background-color: rgb(230, 230, 230);
 }
