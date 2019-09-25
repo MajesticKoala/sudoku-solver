@@ -166,6 +166,8 @@ def removeCells(number):
         for y in range(9):
             numbers[x,y] = removing[x,y]
     drawSudoku()
+    json.dumps(numpy.arange(10).tolist())
+    print(numbers[0])
 
 
 def GenerateSudoku(number, blankCells):

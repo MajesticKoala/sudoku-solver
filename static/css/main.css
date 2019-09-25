@@ -178,3 +178,11 @@ html,body {
 .number-tray-cell:hover {
     background-color: rgb(230, 230, 230);
 }
+
+.selected {
+    background-color: rgb(192, 192, 192);
+}
+
+.tray-selected {
+    background-color: rgb(192, 192, 192);
+}
