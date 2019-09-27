@@ -68,28 +68,29 @@ def fillCell(x,y):
                     numbers[x,y+1] = 0
     return False
 
-def drawSudoku():
-    cellValue = " "
-    for x in range(9):
-        if x == 0:
-            print('-----------------------------------')
-        for y in range(9):
-            if numbers[x,y] == 0:
-                cellValue = " "
-            else:
-                cellValue = numbers[x,y]
-
-            if y == 0:
-                print("| ", cellValue," ", end="")
-            elif (y+1)%9 == 0:
-                print(cellValue, " |")
-            elif (y+1)%3 == 0:
-                print(cellValue, " | ", end="")
-            else:
-                print(cellValue," ", end="")
-        
-        if (x+1)%3 == 0:
-            print('-----------------------------------')
+#Will not compile print statements in Flask
+#def drawSudoku():
+#    cellValue = " "
+#    for x in range(9):
+#        if x == 0:
+#            print('-----------------------------------')
+#        for y in range(9):
+#            if numbers[x,y] == 0:
+#                cellValue = " "
+#            else:
+#                cellValue = numbers[x,y]
+#
+#            if y == 0:
+#                print("| ", cellValue," ", end="")
+#            elif (y+1)%9 == 0:
+#                print(cellValue, " |")
+#            elif (y+1)%3 == 0:
+#                print(cellValue, " | ", end="")
+#            else:
+#                print(cellValue," ", end="")
+#        
+#        if (x+1)%3 == 0:
+#            print('-----------------------------------')
 
 def findNextCell(i,j):
     for x in range(i,9):
@@ -159,27 +160,24 @@ def removeCells(number):
                         numbers[x,y] = removing[x,y]
                 failedCount+=1
                 if failedCount == 20:
-                    print("Too many fails")
+                    #print("Too many fails")
                     break
 
     for x in range(9):
         for y in range(9):
             numbers[x,y] = removing[x,y]
-    drawSudoku()
-    json.dumps(numpy.arange(10).tolist())
-    print(numbers[0])
+    #drawSudoku()
 
 
 def GenerateSudoku(number, blankCells):
     start = time.time()
     for i in range(number):
         if fillCell(0,0):
-            #drawSudoku()
             pass
     removeCells(blankCells)
 
     end = time.time()
-    print(end - start)
+    #print(end - start)
 
 def SolveSudoku():
     global solutions
@@ -203,13 +201,13 @@ def SolveSudoku():
 #if SolveSudoku():
 #    drawSudoku()
 
-GenerateSudoku(1,50)
-print('Row, Column and number. Type 0 to exit')
-incoming = 1
-while incoming != 0:
-    incRow = int(input('Row'))
-    incColumn = int(input('Column'))
-    incNum = int(input('Number'))
-    numbers[incColumn+1,incRow+1] = incNum
-    
-    drawSudoku()
+#GenerateSudoku(1,50)
+#print('Row, Column and number. Type 0 to exit')
+#incoming = 1
+#while incoming != 0:
+#    incRow = int(input('Row'))
+#    incColumn = int(input('Column'))
+#    incNum = int(input('Number'))
+#    numbers[incColumn+1,incRow+1] = incNum
+#    
+#    drawSudoku()
