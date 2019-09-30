@@ -42,8 +42,8 @@ def ifValid(x,y,num):
             return False
         
     cell_orig = [math.floor(x/3)*3,math.floor(y/3)*3]
-    for block_x in range((cell_orig[0]),(cell_orig[0]+3)): #Number in Cell
-        for block_y in range((cell_orig[1]),(cell_orig[1]+3)):
+    for block_x in range(int(cell_orig[0]),int(cell_orig[0]+3)): #Number in Cell
+        for block_y in range(int(cell_orig[1]),int(cell_orig[1]+3)):
             if numbers[block_x, block_y] == num:
                 return False
     return True
@@ -171,12 +171,13 @@ def removeCells(number):
 
 def GenerateSudoku(number, blankCells):
     start = time.time()
-    for i in range(number):
+    for i in range(int(number)):
         if fillCell(0,0):
             pass
     removeCells(blankCells)
 
     end = time.time()
+    return numbers
     #print(end - start)
 
 def SolveSudoku():
