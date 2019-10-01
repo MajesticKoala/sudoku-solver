@@ -161,6 +161,7 @@ def removeCells(number):
                 failedCount+=1
                 if failedCount == 20:
                     #print("Too many fails")
+                    return False
                     break
 
     for x in range(9):
@@ -170,15 +171,22 @@ def removeCells(number):
 
 
 def GenerateSudoku(number, blankCells):
+    initSudoku()
     start = time.time()
     for i in range(int(number)):
         if fillCell(0,0):
             pass
+    
     removeCells(blankCells)
-
     end = time.time()
     return numbers
     #print(end - start)
+
+def initSudoku():
+    numbers = numpy.zeros((9,9), dtype=int)
+    removing = numpy.zeros((9,9), dtype=int)
+    mix_numbers = list(range(1,10))
+    random.shuffle(mix_numbers)
 
 def SolveSudoku():
     global solutions

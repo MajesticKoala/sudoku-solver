@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $.ajaxSetup({ cache: false });
     $(".sudoku-cell").click(function(){
         $(".selected").removeClass("selected");
         $(this).addClass("selected");
