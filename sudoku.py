@@ -183,6 +183,7 @@ def GenerateSudoku(number, blankCells):
     #print(end - start)
 
 def initSudoku():
+    global numbers, removing
     numbers = numpy.zeros((9,9), dtype=int)
     removing = numpy.zeros((9,9), dtype=int)
     mix_numbers = list(range(1,10))
