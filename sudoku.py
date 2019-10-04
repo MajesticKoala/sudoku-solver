@@ -7,26 +7,6 @@ import time
 numbers = numpy.zeros((9,9), dtype=int)
 removing = numpy.zeros((9,9), dtype=int)
 
-#solveThis = [[5,1,7,6,0,0,0,3,4],
-#            [2,8,9,0,0,4,0,0,0],
-#            [3,4,6,2,0,5,0,9,0],
-#            [6,0,2,0,0,0,0,1,0],
-#            [0,3,8,0,0,6,0,4,7],
-#            [0,0,0,0,0,0,0,0,0],
-#            [0,9,0,0,0,0,0,7,8],
-#            [7,0,3,4,0,0,5,6,0],
-#            [0,0,0,0,0,0,0,0,0]]
-         
-solveThis = [[5,1,7,6,0,0,0,3,4],
-            [2,8,9,0,0,4,0,0,0],
-            [3,4,6,2,0,5,0,9,0],
-            [6,0,2,0,0,0,0,1,0],
-            [0,3,8,0,0,6,0,4,7],
-            [0,0,0,0,0,0,0,0,0],
-            [0,9,0,0,0,0,0,7,8],
-            [7,0,3,4,0,0,5,6,0],
-            [0,0,0,0,0,0,0,0,0]]
-
 mix_numbers = list(range(1,10))
 random.shuffle(mix_numbers)
 cell_orig = list()
@@ -68,30 +48,6 @@ def fillCell(x,y):
                     numbers[x,y+1] = 0
     return False
 
-#Will not compile print statements in Flask
-#def drawSudoku():
-#    cellValue = " "
-#    for x in range(9):
-#        if x == 0:
-#            print('-----------------------------------')
-#        for y in range(9):
-#            if numbers[x,y] == 0:
-#                cellValue = " "
-#            else:
-#                cellValue = numbers[x,y]
-#
-#            if y == 0:
-#                print("| ", cellValue," ", end="")
-#            elif (y+1)%9 == 0:
-#                print(cellValue, " |")
-#            elif (y+1)%3 == 0:
-#                print(cellValue, " | ", end="")
-#            else:
-#                print(cellValue," ", end="")
-#        
-#        if (x+1)%3 == 0:
-#            print('-----------------------------------')
-
 def findNextCell(i,j):
     for x in range(i,9):
         for y in range(j,9):
@@ -109,8 +65,6 @@ def solveCell(x,y):
     x,y = findNextCell(x,y)
 
     if x == -1:
-        #drawSudoku()
-        #print('\n')
         solutions += 1
         if solutions > 1:
             #print("Multiple Solutions")
@@ -192,11 +146,6 @@ def initSudoku():
 def SolveSudoku():
     global solutions
     solutions = 0
-    #for x in range(9):
-        #for y in range(9):
-            #numbers[x,y] = solveThis[x][y]
-            #numbers[x,y] = solveThis[x][y]
-    #drawSudoku()
     if not solveCell(0,0):
         if solutions == 0:
             #print("No solutions for Sudoku")
@@ -207,17 +156,3 @@ def SolveSudoku():
         else:
             #print(solutions," solutions to Sudoku")
             return False
-
-#if SolveSudoku():
-#    drawSudoku()
-
-#GenerateSudoku(1,50)
-#print('Row, Column and number. Type 0 to exit')
-#incoming = 1
-#while incoming != 0:
-#    incRow = int(input('Row'))
-#    incColumn = int(input('Column'))
-#    incNum = int(input('Number'))
-#    numbers[incColumn+1,incRow+1] = incNum
-#    
-#    drawSudoku()
