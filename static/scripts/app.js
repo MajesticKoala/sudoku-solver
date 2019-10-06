@@ -17,7 +17,19 @@ $(document).ready(function(){
             contentType: 'application/json;charset=UTF-8',
             success: function (data) {
                 console.log(data);
+                populateData(data);
                 }
             });
     });
+    function populateData(data) {
+        for (let row = 0; row < data.length; row++) {
+            for (let column = 0; column < data[row].length; column++) {
+                //Clear out cell first
+                $('#cell'+row+column).text("")
+                if (data[row][column] != "0") {
+                    $('#cell'+row+column).text(data[row][column])
+                }
+            }
+        }       
+    }
   });
