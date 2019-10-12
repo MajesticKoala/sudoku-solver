@@ -12,7 +12,7 @@ def index():
 @app.route('/generate-sudoku', methods=['POST'])
 def generateSudoku():
     if request.method == 'POST':
-        sudokuArray = GenerateSudoku(1,30)
+        sudokuArray = GenerateSudoku(1, 60)
         return jsonify(sudokuArray.tolist())
 
 if __name__ == "__main__":

@@ -126,6 +126,7 @@ def removeCells(number):
 
 def GenerateSudoku(number, blankCells):
     initSudoku()
+    
     start = time.time()
     for i in range(int(number)):
         if fillCell(0,0):
@@ -137,7 +138,8 @@ def GenerateSudoku(number, blankCells):
     #print(end - start)
 
 def initSudoku():
-    global numbers, removing
+    global numbers, removing, blankCells
+    blankCells = 0
     numbers = numpy.zeros((9,9), dtype=int)
     removing = numpy.zeros((9,9), dtype=int)
     mix_numbers = list(range(1,10))

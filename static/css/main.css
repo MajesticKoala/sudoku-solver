@@ -1,4 +1,5 @@
-html,body {
+html,
+body {
     height: 100%;
 }
 
@@ -25,6 +26,7 @@ html,body {
     position: relative;
     width: 100%;
 }
+
 .main-sudoku {
     width: 100%;
     height: 100%;
@@ -53,7 +55,7 @@ html,body {
     border: 2px solid black;
 }
 
-.sudoku-table:after{
+.sudoku-table:after {
     content: "";
     display: block;
     height: 33.3333%;
@@ -67,7 +69,7 @@ html,body {
 }
 
 
-.sudoku-table tbody:after{
+.sudoku-table tbody:after {
     content: "";
     display: block;
     height: 100%;
@@ -95,17 +97,21 @@ html,body {
 }
 
 .sudoku-cell {
-    display: flex;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 2em;
+    font-family: 'Courier New', Courier, monospace;
     height: 100%;
     width: 11.5%;
-    border-top: 1px solid rgb(196, 196, 196);
-    border-right: 1px solid rgb(196, 196, 196);
+    border-top: 1px solid rgb(175, 216, 248);
+    /*border-top: 1px solid rgb(196, 196, 196);*/
+    border-right: 1px solid rgb(175, 216, 248);
     box-sizing: border-box;
     cursor: pointer;
 }
 
 .sudoku-cell:hover {
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(175, 216, 248);
 }
 
 .bot-cell {
@@ -162,6 +168,7 @@ html,body {
     width: 100%;
     height: 100%;
 }
+
 .number-cell-left {
     border-left: 1px solid rgb(196, 196, 196);
 }
@@ -182,9 +189,38 @@ html,body {
 }
 
 .selected {
-    background-color: rgb(192, 192, 192);
+    background-color: rgba(0, 190, 218, 0.75);
+    animation-name: selectedCellAnimation;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
 }
 
 .tray-selected {
-    background-color: rgb(192, 192, 192);
+    background-color: rgba(0, 190, 218, 0.3);
+}
+
+@keyframes selectedCellAnimation {
+    0% {
+        transform: scale(0.3);
+        background-color: rgba(0, 0, 66, 0.3);
+        border-radius: 100%;
+    }
+
+    50% {
+        background-color: rgba(17, 104, 217, 0.3);
+    }
+
+    75% {
+        transform-style: scale(1.0);
+        background-color: rgba(0, 190, 218, 0.3);
+    }
+
+    100% {
+        background-color: rgba(0, 190, 218, 0.3);
+    }
 }
