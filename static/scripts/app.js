@@ -4,11 +4,12 @@ $(document).ready(function(){
         $(".selected").removeClass("selected");
         $(this).addClass("selected");
     });
+    /*
     $(".number-tray-cell").click(function(){
         $(".tray-selected").removeClass("tray-selected");
         $(this).addClass("tray-selected")
     });
-
+*/
     $("#generate-button").click(function(){
         $.ajax({
             type : "POST",
