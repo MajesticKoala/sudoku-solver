@@ -17,7 +17,6 @@ $(document).ready(function(){
             dataType: "json",
             contentType: 'application/json;charset=UTF-8',
             success: function (data) {
-                console.log(data);
                 populateData(data);
                 }
             });
