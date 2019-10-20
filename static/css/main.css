@@ -199,6 +199,10 @@ body {
     animation-play-state: running;
 }
 
+.generating {
+    background-color: rgb(214, 214, 214);
+}
+
 @keyframes selectedCellAnimation {
     0% {
         transform: scale(1);

@@ -13,9 +13,9 @@ def index():
 @app.route('/generate-sudoku', methods=['POST'])
 def generateSudoku():
     if request.method == 'POST':
-        sudokuArray, solveArray = GenerateSudoku(1, 60)
+        sudokuArray, solveArray = GenerateSudoku(1, 50)
 
-        return jsonify(sudokuArray)
+        return jsonify(sudokuArray.tolist())
 
 if __name__ == "__main__":
     app.run(debug=True)
