@@ -2,10 +2,12 @@ import math
 import random
 import numpy
 import time
+import sys, os
 
 
 numbers = numpy.zeros((9,9), dtype=int)
 removing = numpy.zeros((9,9), dtype=int)
+solved = numpy.zeros((9,9), dtype=int)
 
 mix_numbers = list(range(1,10))
 random.shuffle(mix_numbers)
@@ -88,6 +90,7 @@ def solveCell(x,y):
 def removeCells(number):
     for x in range(9):
         for y in range(9):
+            solved[x,y] = numbers[x,y]
             removing[x,y] = numbers[x,y]
     removeCount = 0
     failedCount = 0
@@ -134,14 +137,22 @@ def GenerateSudoku(number, blankCells):
     
     removeCells(blankCells)
     end = time.time()
-    return numbers
+    listed = []
+    temp = []
+    for i in solved:
+        for j in i:
+            temp += [int(j)]
+        listed += [temp]
+        temp = []
+    return numbers, solved
     #print(end - start)
 
 def initSudoku():
-    global numbers, removing, blankCells
+    global numbers, removing, blankCells, solved
     blankCells = 0
     numbers = numpy.zeros((9,9), dtype=int)
     removing = numpy.zeros((9,9), dtype=int)
+    solved = numpy.zeros((9,9), dtype=int)
     mix_numbers = list(range(1,10))
     random.shuffle(mix_numbers)
 

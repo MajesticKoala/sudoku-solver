@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, url_for, jsonify
 from sudoku import *
+import numpy as np
 
 app = Flask(__name__)
 
@@ -12,8 +13,9 @@ def index():
 @app.route('/generate-sudoku', methods=['POST'])
 def generateSudoku():
     if request.method == 'POST':
-        sudokuArray = GenerateSudoku(1, 60)
-        return jsonify(sudokuArray.tolist())
+        sudokuArray, solveArray = GenerateSudoku(1, 60)
+
+        return jsonify(sudokuArray)
 
 if __name__ == "__main__":
     app.run(debug=True)
