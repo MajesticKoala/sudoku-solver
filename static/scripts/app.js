@@ -1,10 +1,18 @@
 $(document).ready(function(){
     $.ajaxSetup({ cache: false });
+
     $(".sudoku-cell").click(function(){
+        //Add animation when clicking
         $(".selected").removeClass("selected");
         $(this).addClass("selected");
     });
-    
+
+    $(".number-tray-cell").click(function(){
+        //Add number to sudoku cell if empty
+        var cellValue = $(this).text();
+        $(".selected").text(cellValue);
+    });
+
     $("#generate-button").click(function(){
         if (!$(this).hasClass("generating")) {
             $(this).addClass("generating");
@@ -14,8 +22,10 @@ $(document).ready(function(){
                 url : '/generate-sudoku',
                 dataType: "json",
                 contentType: 'application/json;charset=UTF-8',
+                error: function(request, error){
+                    console.log(error)
+                },
                 success: function (data) {
-                    console.log(data);
                     $(this).removeClass("generating");
                     $(this).text("Generate")
                     populateData(data);
@@ -24,12 +34,15 @@ $(document).ready(function(){
         }
     });
     function populateData(data) {
-        for (let row = 0; row < data.length; row++) {
-            for (let column = 0; column < data[row].length; column++) {
+        sudokuArray = data[0]
+        solveArray = data[1]
+        console.log(solveArray)
+        for (let row = 0; row < sudokuArray.length; row++) {
+            for (let column = 0; column < sudokuArray[row].length; column++) {
                 //Clear out cell first
                 $('#cell'+row+column).text("")
-                if (data[row][column] != "0") {
-                    $('#cell'+row+column).text(data[row][column])
+                if (sudokuArray[row][column] != "0") {
+                    $('#cell'+row+column).text(sudokuArray[row][column])
                 }
             }
         }       
