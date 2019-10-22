@@ -15,7 +15,7 @@ def generateSudoku():
     if request.method == 'POST':
         sudokuArray, solveArray = GenerateSudoku(1, 50)
 
-        return jsonify(sudokuArray.tolist())
+        return jsonify(sudokuArray.tolist(), solvedArray.tolist())
 
 if __name__ == "__main__":
     app.run(debug=True)
