@@ -33,7 +33,6 @@ $(document).ready(function(){
     $("#generate-button").click(function(){
         if (!$(this).hasClass("generating")) {
             $(this).addClass("generating");
-            $(this).text("Generating...")
             $.ajax({
                 type : "POST",
                 url : '/generate-sudoku',
@@ -41,12 +40,10 @@ $(document).ready(function(){
                 contentType: 'application/json;charset=UTF-8',
                 error: function(request, error){
                     $(this).removeClass("generating");
-                    $(this).text("Generate")
                     console.log(error)
                 },
                 success: function (data) {
                     $(this).removeClass("generating");
-                    $(this).text("Generate")
                     sudokuArray = data[0]
                     solvedArray = data[1]
                     populateData();
