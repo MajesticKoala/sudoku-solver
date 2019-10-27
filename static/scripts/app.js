@@ -14,6 +14,20 @@ $(document).ready(function(){
         //Add animation when clicking
         $(".selected").removeClass("selected");
         $(this).addClass("selected");
+
+        //Highlight cells in row/column/square
+        var cellId = $(this).attr("id");
+        row = cellId[4]
+        col = cellId[5]
+
+        $(".highlighted").removeClass("highlighted");
+
+        for (let index = 0; index < 9; index++) {
+            var $el = $("td[id*='cell" + row + index + "']");
+            $el.addClass("highlighted");
+            var $el = $("td[id*='cell" + index + col + "']");
+            $el.addClass("highlighted");
+        }
     });
 
     $(".number-tray-cell").click(function(){
