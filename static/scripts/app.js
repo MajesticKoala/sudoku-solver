@@ -15,18 +15,28 @@ $(document).ready(function(){
         $(".selected").removeClass("selected");
         $(this).addClass("selected");
 
-        //Highlight cells in row/column/square
+        //Highlight cells in row/column/block
         var cellId = $(this).attr("id");
         row = cellId[4]
         col = cellId[5]
 
         $(".highlighted").removeClass("highlighted");
 
+        //Highlight for row and column
         for (let index = 0; index < 9; index++) {
             var $el = $("td[id*='cell" + row + index + "']");
             $el.addClass("highlighted");
             var $el = $("td[id*='cell" + index + col + "']");
             $el.addClass("highlighted");
+        }
+
+        //Highlight for block
+        cell_orig = [Math.floor(row/3)*3,Math.floor(col/3)*3]
+        for (let block_row = cell_orig[0]; block_row < cell_orig[0]+3; block_row++) {
+            for (let block_col = cell_orig[1]; block_col < cell_orig[1]+3; block_col++) {
+                var $el = $("td[id*='cell" + block_row + block_col + "']");
+                $el.addClass("highlighted");
+            }
         }
     });
 
@@ -66,7 +76,6 @@ $(document).ready(function(){
         }
     });
     function populateData() {
-        console.log(solvedArray)
         for (let row = 0; row < sudokuArray.length; row++) {
             for (let column = 0; column < sudokuArray[row].length; column++) {
                 //Clear out cell first
