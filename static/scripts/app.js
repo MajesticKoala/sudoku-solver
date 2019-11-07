@@ -70,6 +70,8 @@ $(document).ready(function(){
                     $(this).removeClass("generating");
                     sudokuArray = data[0]
                     solvedArray = data[1]
+                    prefilledArray = data[2]
+                    console.log(prefilledArray)
                     populateData();
                     }
                 });

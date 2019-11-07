@@ -137,14 +137,8 @@ def GenerateSudoku(number, blankCells):
     
     removeCells(blankCells)
     end = time.time()
-    listed = []
-    temp = []
-    for i in solved:
-        for j in i:
-            temp += [int(j)]
-        listed += [temp]
-        temp = []
-    return numbers, solved
+    prefilled = number[numbers0]
+    return numbers, solved, prefilled
     #print(end - start)
 
 def initSudoku():
