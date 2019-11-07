@@ -137,7 +137,7 @@ def GenerateSudoku(number, blankCells):
     
     removeCells(blankCells)
     end = time.time()
-    prefilled = number[numbers0]
+    prefilled = number[numbers==0]
     return numbers, solved, prefilled
     #print(end - start)
 
