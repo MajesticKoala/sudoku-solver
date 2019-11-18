@@ -8,6 +8,7 @@ import sys, os
 numbers = numpy.zeros((9,9), dtype=int)
 removing = numpy.zeros((9,9), dtype=int)
 solved = numpy.zeros((9,9), dtype=int)
+prefilled = = numpy.zeros((9,9), dtype=int)
 
 mix_numbers = list(range(1,10))
 random.shuffle(mix_numbers)
@@ -92,6 +93,10 @@ def removeCells(number):
         for y in range(9):
             solved[x,y] = numbers[x,y]
             removing[x,y] = numbers[x,y]
+            
+            #Generate prefilled array base on numbers[]
+            prefilled[x,y] = 1 if numbers[x,y] > 0 else 0
+
     removeCount = 0
     failedCount = 0
 
@@ -137,16 +142,17 @@ def GenerateSudoku(number, blankCells):
     
     removeCells(blankCells)
     end = time.time()
-    prefilled = number[numbers==0]
+    
     return numbers, solved, prefilled
     #print(end - start)
 
 def initSudoku():
-    global numbers, removing, blankCells, solved
+    global numbers, removing, blankCells, solved, prefilled
     blankCells = 0
     numbers = numpy.zeros((9,9), dtype=int)
     removing = numpy.zeros((9,9), dtype=int)
     solved = numpy.zeros((9,9), dtype=int)
+    prefilled = numpy.zeros((9,9), dtype=int)
     mix_numbers = list(range(1,10))
     random.shuffle(mix_numbers)
 
