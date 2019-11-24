@@ -8,7 +8,7 @@ import sys, os
 numbers = numpy.zeros((9,9), dtype=int)
 removing = numpy.zeros((9,9), dtype=int)
 solved = numpy.zeros((9,9), dtype=int)
-prefilled = = numpy.zeros((9,9), dtype=int)
+prefilled = numpy.zeros((9,9), dtype=int)
 
 mix_numbers = list(range(1,10))
 random.shuffle(mix_numbers)
