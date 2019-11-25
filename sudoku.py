@@ -93,9 +93,6 @@ def removeCells(number):
         for y in range(9):
             solved[x,y] = numbers[x,y]
             removing[x,y] = numbers[x,y]
-            
-            #Generate prefilled array base on numbers[]
-            prefilled[x,y] = 1 if numbers[x,y] > 0 else 0
 
     removeCount = 0
     failedCount = 0
@@ -129,7 +126,9 @@ def removeCells(number):
     for x in range(9):
         for y in range(9):
             numbers[x,y] = removing[x,y]
-    #drawSudoku()
+
+            #Generate prefilled array base on numbers[]
+            prefilled[x,y] = 1 if numbers[x,y] > 0 else 0
 
 
 def GenerateSudoku(number, blankCells):
