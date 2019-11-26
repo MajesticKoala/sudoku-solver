@@ -7,7 +7,7 @@ $(document).ready(function(){
     var lives = 3;
 
     //sudokuArray = [[0,0,0,0,0,0,0,0,4],[0,1,2,6,0,0,7,0,0],[9,0,8,0,0,1,0,0,6],[0,0,0,3,0,4,2,9,0],[0,0,6,0,0,9,0,0,7],[5,0,4,0,0,0,6,3,0],[0,8,0,0,0,0,0,6,0],[0,3,0,0,8,2,0,0,0],[0,0,5,7,0,0,0,0,0]];
-    sudokuArray = [[0,6,3,2,9,5,8,1,4],[4,1,2,6,3,8,7,5,9],[9,5,8,4,7,1,3,2,6],[8,7,1,3,6,4,2,9,5],[3,2,6,8,5,9,1,4,7],[5,9,4,1,2,7,6,3,8],[1,8,7,9,4,3,5,6,2],[6,3,9,5,8,2,4,7,1],[2,4,5,7,1,6,9,8,3]];
+    sudokuArray = [[0,0,3,2,9,5,8,1,4],[4,1,2,6,3,8,7,5,9],[9,5,8,4,7,1,3,2,6],[8,7,1,3,6,4,2,9,5],[3,2,6,8,5,9,1,4,7],[5,9,4,1,2,7,6,3,8],[1,8,7,9,4,3,5,6,2],[6,3,9,5,8,2,4,7,1],[2,4,5,7,1,6,9,8,3]];
 
     solvedArray = [[7,6,3,2,9,5,8,1,4],[4,1,2,6,3,8,7,5,9],[9,5,8,4,7,1,3,2,6],[8,7,1,3,6,4,2,9,5],[3,2,6,8,5,9,1,4,7],[5,9,4,1,2,7,6,3,8],[1,8,7,9,4,3,5,6,2],[6,3,9,5,8,2,4,7,1],[2,4,5,7,1,6,9,8,3]];
     prefilledArray = [[0,0,0,0,0,0,0,0,1],[0,1,1,1,0,0,1,0,0],[1,0,1,0,0,1,0,0,1],[0,0,0,1,0,1,1,1,0],[0,0,1,0,0,1,0,0,1],[1,0,1,0,0,0,1,1,0],[0,1,0,0,0,0,0,1,0],[0,1,0,0,1,1,0,0,0],[0,0,1,1,0,0,0,0,0]];
@@ -68,16 +68,16 @@ $(document).ready(function(){
                 //Check if row/column/square completed
 
                 //Check if sudoku completed
-                if (
-                    $('td').each(function(){
-                        if ($(this).val().length == 0) {
-                            return 0
-                        }
-                    })
-                ) {
+                var completed = true
+                $('td').each(function(){
+                    if ($(this).text().length == 0) {
+                        console.log($(this).text().length)
+                        completed = false
+                    }
+                });
+                if (completed && !$(".incorrect-value")[0]) {
                     $(".win-overlay").addClass("winner");
                 }
-                
             }
         }
     });
@@ -91,11 +91,11 @@ $(document).ready(function(){
                 dataType: "json",
                 contentType: 'application/json;charset=UTF-8',
                 error: function(request, error){
-                    $(this).removeClass("generating");
+                    $(".generating").removeClass("generating");
                     console.log(error)
                 },
                 success: function (data) {
-                    $(this).removeClass("generating");
+                    $(".generating").removeClass("generating");
                     sudokuArray = data[0]
                     solvedArray = data[1]
                     prefilledArray = data[2]
