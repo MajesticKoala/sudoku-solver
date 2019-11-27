@@ -71,7 +71,6 @@ $(document).ready(function(){
                 var completed = true
                 $('td').each(function(){
                     if ($(this).text().length == 0) {
-                        console.log($(this).text().length)
                         completed = false
                     }
                 });
@@ -99,7 +98,6 @@ $(document).ready(function(){
                     sudokuArray = data[0]
                     solvedArray = data[1]
                     prefilledArray = data[2]
-                    console.log(prefilledArray)
                     populateData();
                     }
                 });
