@@ -6,8 +6,8 @@ $(document).ready(function(){
     var prefilledArray;
     var lives = 3;
 
-    //sudokuArray = [[0,0,0,0,0,0,0,0,4],[0,1,2,6,0,0,7,0,0],[9,0,8,0,0,1,0,0,6],[0,0,0,3,0,4,2,9,0],[0,0,6,0,0,9,0,0,7],[5,0,4,0,0,0,6,3,0],[0,8,0,0,0,0,0,6,0],[0,3,0,0,8,2,0,0,0],[0,0,5,7,0,0,0,0,0]];
-    sudokuArray = [[0,0,3,2,9,5,8,1,4],[4,1,2,6,3,8,7,5,9],[9,5,8,4,7,1,3,2,6],[8,7,1,3,6,4,2,9,5],[3,2,6,8,5,9,1,4,7],[5,9,4,1,2,7,6,3,8],[1,8,7,9,4,3,5,6,2],[6,3,9,5,8,2,4,7,1],[2,4,5,7,1,6,9,8,3]];
+    sudokuArray = [[0,0,0,0,0,0,0,0,4],[0,1,2,6,0,0,7,0,0],[9,0,8,0,0,1,0,0,6],[0,0,0,3,0,4,2,9,0],[0,0,6,0,0,9,0,0,7],[5,0,4,0,0,0,6,3,0],[0,8,0,0,0,0,0,6,0],[0,3,0,0,8,2,0,0,0],[0,0,5,7,0,0,0,0,0]];
+    //sudokuArray = [[0,0,3,2,9,5,8,1,4],[4,1,2,6,3,8,7,5,9],[9,5,8,4,7,1,3,2,6],[8,7,1,3,6,4,2,9,5],[3,2,6,8,5,9,1,4,7],[5,9,4,1,2,7,6,3,8],[1,8,7,9,4,3,5,6,2],[6,3,9,5,8,2,4,7,1],[2,4,5,7,1,6,9,8,3]];
 
     solvedArray = [[7,6,3,2,9,5,8,1,4],[4,1,2,6,3,8,7,5,9],[9,5,8,4,7,1,3,2,6],[8,7,1,3,6,4,2,9,5],[3,2,6,8,5,9,1,4,7],[5,9,4,1,2,7,6,3,8],[1,8,7,9,4,3,5,6,2],[6,3,9,5,8,2,4,7,1],[2,4,5,7,1,6,9,8,3]];
     prefilledArray = [[0,0,0,0,0,0,0,0,1],[0,1,1,1,0,0,1,0,0],[1,0,1,0,0,1,0,0,1],[0,0,0,1,0,1,1,1,0],[0,0,1,0,0,1,0,0,1],[1,0,1,0,0,0,1,1,0],[0,1,0,0,0,0,0,1,0],[0,1,0,0,1,1,0,0,0],[0,0,1,1,0,0,0,0,0]];
@@ -17,9 +17,13 @@ $(document).ready(function(){
 
 
     $(".sudoku-cell").click(function(){
-        //Add animation when clicking
+        //Add classes to cells
         $(".selected").removeClass("selected");
+        $(".same-number").removeClass("same-number");
         $(this).addClass("selected");
+
+        highlightSameNumbers($(this).text());
+
 
         //Highlight cells in row/column/block
         var cellId = $(this).attr("id");
@@ -44,6 +48,7 @@ $(document).ready(function(){
                 $el.addClass("highlighted");
             }
         }
+
     });
 
     $(".number-tray-cell").click(function(){
@@ -53,8 +58,10 @@ $(document).ready(function(){
         selectedCell.removeClass("incorrect-value")
         var cellId = selectedCell.attr("id");
 
+
         if (!prefilledArray[cellId[4]][cellId[5]]) {
             selectedCell.text(cellValue);
+            highlightSameNumbers($(this).text());
 
             //If selected value is wrong
             if (solvedArray[cellId[4]][cellId[5]] != cellValue) {
@@ -65,11 +72,11 @@ $(document).ready(function(){
                     $(".win-overlay").addClass("loser");
                 }
             } else {
-                //Check if row/column/square completed
+                //Check if row/column/square completed (add animation potentially)
 
                 //Check if sudoku completed
                 var completed = true
-                $('td').each(function(){
+                $('.sudoku-cell').each(function(){
                     if ($(this).text().length == 0) {
                         completed = false
                     }
@@ -113,5 +120,11 @@ $(document).ready(function(){
                 }
             }
         }       
+    }
+
+    function highlightSameNumbers(cellnumber){
+        $('.sudoku-cell').filter(function(){
+            return $(this).text() === cellnumber && $(this).text().length > 0;
+        }).addClass("same-number");
     }
   });

@@ -18,7 +18,7 @@ body {
 
 .game-wrapper {
     display: block;
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto 20px;
 }
 
@@ -209,7 +209,11 @@ body {
 }
 
 .highlighted {
-    background-color: rgba(0, 190, 218, 0.1)
+    background-color: rgba(152, 199, 206, 0.301)
+}
+
+.same-number {
+    background-color: rgba(0, 190, 218, 0.2)
 }
 
 .generating {
