@@ -89,27 +89,16 @@ $(document).ready(function(){
     });
 
     $("#generate-button").click(function(){
-        if (!$(this).hasClass("generating")) {
-            $(this).addClass("generating");
-            $.ajax({
-                type : "POST",
-                url : '/generate-sudoku',
-                dataType: "json",
-                contentType: 'application/json;charset=UTF-8',
-                error: function(request, error){
-                    $(".generating").removeClass("generating");
-                    console.log(error)
-                },
-                success: function (data) {
-                    $(".generating").removeClass("generating");
-                    sudokuArray = data[0]
-                    solvedArray = data[1]
-                    prefilledArray = data[2]
-                    populateData();
-                    }
-                });
+        if (!$(this).hasClass("disabled")) {
+            $(this).addClass("disabled");
+            callGenerateSudoku();
         }
     });
+
+    $("#solve-button").click(function(){
+        $(this).text('Nice try');
+    });
+
     function populateData() {
         for (let row = 0; row < sudokuArray.length; row++) {
             for (let column = 0; column < sudokuArray[row].length; column++) {
@@ -126,5 +115,25 @@ $(document).ready(function(){
         $('.sudoku-cell').filter(function(){
             return $(this).text() === cellnumber && $(this).text().length > 0;
         }).addClass("same-number");
+    }
+
+    function callGenerateSudoku(){
+        $.ajax({
+            type : "POST",
+            url : '/generate-sudoku',
+            dataType: "json",
+            contentType: 'application/json;charset=UTF-8',
+            error: function(request, error){
+                $(".disabled").removeClass("disabled");
+                console.log(error)
+            },
+            success: function (data) {
+                $(".disabled").removeClass("disabled");
+                sudokuArray = data[0]
+                solvedArray = data[1]
+                prefilledArray = data[2]
+                populateData();
+                }
+            });
     }
   });

@@ -1,7 +1,35 @@
-html,
-body {
-    height: 100%;
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
 }
+
+.nav-gen-btn {
+    width: 150px;
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1.4;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.bg-custom {
+    background-color: rgb(46, 77, 105);
+}
+
+.disabled {
+    background-color: #387c6f;
+}
+
 
 .content-wrapper {
     display: flex;
