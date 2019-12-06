@@ -2,4 +2,4 @@
 
 This program is capable of generating and solving Sudoku's
 
-The program will be extended to have a user interface in the future
+Test your Sudoku skills out with a never before seen sudoku!!
