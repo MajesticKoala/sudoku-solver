@@ -1,4 +1,4 @@
-#Sudoku Solver
+# Sudoku Solver
 
 This program is capable of generating and solving Sudoku's
 
